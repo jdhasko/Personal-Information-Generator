@@ -21,4 +21,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Personal Information Generator 2\Personal Information Generator.csproj" />
+  </ItemGroup>
+
 </Project>
