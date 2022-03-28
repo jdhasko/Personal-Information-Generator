@@ -17,10 +17,10 @@ namespace Personal_Information_Generator_2
             switch (month)
             {
                 case 1: case 3: case 5: case 7: case 8: case 10: case 12: 
-                    day = r.Next(1, 31);
+                    day = r.Next(1, 32);
                     break;
                 case 4: case 6: case 9: case 11:
-                    day = r.Next(1, 30);
+                    day = r.Next(1, 31);
                     break;
 
                 case 2:
@@ -45,16 +45,16 @@ namespace Personal_Information_Generator_2
                 month =  "0" + birthDate.Month.ToString();
             else month = birthDate.Month.ToString();
 
-            string cpr = day + month + birthDate.Year.ToString().Substring(2, 2) + rnd.Next(0, 9).ToString() + rnd.Next(0, 9).ToString() + rnd.Next(0, 9).ToString();
+            string cpr = day + month + birthDate.Year.ToString().Substring(2, 2) + rnd.Next(0, 10).ToString() + rnd.Next(0, 10).ToString() + rnd.Next(0, 10).ToString();
 
 
             if (gender == "male")
             {
-                cpr += RandomNumberOdd(0,9);
+                cpr += RandomNumberOdd(0,10);
             }
             else
             {
-                cpr += RandomNumberEven(0,9);
+                cpr += RandomNumberEven(0,10);
             }
             return cpr;
         }
@@ -103,7 +103,7 @@ namespace Personal_Information_Generator_2
                 498, 499,  542, 543,  545,  551, 552, 556, 571, 572, 573, 574, 577, 579, 584, 586, 587, 589, 597, 598, 627, 629, 641, 
                 649, 658, 662, 663, 664, 665, 667, 692, 693, 694, 697, 771, 772, 782, 783, 785, 786, 788, 789, 826,827,829 };
             Random random = new Random();
-            int phone = list[random.Next(0, list.Count - 1)];
+            int phone = list[random.Next(0, list.Count)];
             //phone = phone * 10 ^ (8 - phone.ToString().Length) + random.Next(0, 9) * 10 ^ (8 - phone.ToString().Length - 1);
             //switch (phone.ToString().Length)
             //{
@@ -119,7 +119,7 @@ namespace Personal_Information_Generator_2
             //return phone;
             while (phone.ToString().Length !=8)
             {
-                phone = phone*10 + random.Next(0,9);
+                phone = phone*10 + random.Next(0,10);
             }
             return phone;
         }
