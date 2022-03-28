@@ -10,24 +10,20 @@ namespace Personal_Information_Generator_2.Models
 {
     public class Identity
     {
-        private int _cpr;
+        private string _cpr;
         private string _fullName;
         private string _gender;
         private string _phoneNumber;
         private DateTime _birthDate;
         private string _address;
 
-        //public Identity(int cpr, string fullName, string gender, string phoneNumber, DateTime birthDate, string address)
-        //{
-        //    _cpr = cpr;
-        //    _fullName = fullName;
-        //    _gender = gender;
-        //    _phoneNumber = phoneNumber;
-        //    _birthDate = birthDate;
-        //    _address = address;
-        //}
+        public Identity()
+        {
+            _birthDate = Generator.GetRandomBirthDate();
 
-        public int Cpr { get => _cpr; set => _cpr = value; }
+        }
+
+        public string Cpr { get => _cpr; set => _cpr = value; }
         public string FullName { get => _fullName; set => _fullName = value; }
         public string Gender { get => _gender; set => _gender = value; }
         public string PhoneNumber { get => _phoneNumber; set => _phoneNumber = value; }
@@ -35,7 +31,7 @@ namespace Personal_Information_Generator_2.Models
         public string Address { get => _address; set => _address = value; }
     
     
-       public string GetFullNameAndGender()
+       public void GetFullNameAndGender()
         {
             if(_fullName ==null || Gender == null)
             {
@@ -47,8 +43,27 @@ namespace Personal_Information_Generator_2.Models
                 Gender = persons[personNumber].Gender;
 
             }
-            return _fullName + " " + _gender;
+            //return _fullName + " " + _gender;
         }
+
+        public void CreateCPR() 
+        { 
+            if(BirthDate == null)
+            {
+                BirthDate = Generator.GetRandomBirthDate();
+            }
+
+            if(Gender == null)
+            {
+                GetFullNameAndGender();
+            }
+
+            _cpr = Generator.GetFakeCPR(_gender, _birthDate);
+
+        }
+
+ 
+
     
     }
 }

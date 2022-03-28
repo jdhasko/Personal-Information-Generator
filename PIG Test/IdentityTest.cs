@@ -1,4 +1,5 @@
 using Personal_Information_Generator_2.Models;
+using System;
 using Xunit;
 
 namespace PIG_Test
@@ -8,7 +9,7 @@ namespace PIG_Test
 
         // The "persons:" part should be removed from the file. Someone should fix this.
         [Fact]
-        public void GetFullNameAndGender()
+        public void GetFullNameAndGender_Test()
         {
             //Arrange
             Identity testPerson = new Identity();
@@ -21,6 +22,41 @@ namespace PIG_Test
             Assert.Contains(" ", testPerson.FullName);
             Assert.True(testPerson.Gender.Length > 0);
 
+        }
+
+        [Fact]
+        public void CreateCprDateMatchesCpr_Test()
+        {
+            //Arrange
+            Identity testPerson = new Identity();
+
+            //Act
+            testPerson.CreateCPR();
+
+            //Assert
+            Assert.Contains( testPerson.BirthDate.Day.ToString() + testPerson.BirthDate.Month.ToString() + testPerson.BirthDate.Year.ToString().Substring(0,2), testPerson.Cpr.ToString() );
+
+        }
+
+        [Fact]
+        public void CreateCprReflectsOnGender_Test()
+        {
+            //Arrange
+            Identity testPerson = new Identity();
+
+            //Act
+            testPerson.CreateCPR();
+
+            //Assert
+            if(testPerson.Gender == "male")
+            {
+                Assert.True(Convert.ToInt32(testPerson.Cpr) % 2 == 1);
+            }
+            if (testPerson.Gender == "female")
+            {
+                Assert.True(Convert.ToInt32(testPerson.Cpr) % 2 == 0);
+
+            }
         }
     }
 }
