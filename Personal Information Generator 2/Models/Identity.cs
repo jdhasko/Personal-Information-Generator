@@ -14,7 +14,7 @@ namespace Personal_Information_Generator_2.Models
         private string _cpr;
         private string _fullName;
         private string _gender;
-        private string _phoneNumber;
+        private int _phoneNumber;
         private DateTime _birthDate;
         private string _address;
 
@@ -22,12 +22,13 @@ namespace Personal_Information_Generator_2.Models
         {
             _birthDate = Generator.GetRandomBirthDate();
             _address = CreateAdress();
+            _phoneNumber = Generator.GetPhoneNumber();
         }
 
         public string Cpr { get => _cpr; set => _cpr = value; }
         public string FullName { get => _fullName; set => _fullName = value; }
         public string Gender { get => _gender; set => _gender = value; }
-        public string PhoneNumber { get => _phoneNumber; set => _phoneNumber = value; }
+        public int PhoneNumber { get => _phoneNumber; set => _phoneNumber = value; }
         public DateTime BirthDate { get => _birthDate; set => _birthDate = value; }
         public string Address { get => _address; set => _address = value; }
     
