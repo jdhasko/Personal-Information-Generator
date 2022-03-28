@@ -12,32 +12,45 @@ namespace Personal_Information_Generator_2
         {
             Random r = new Random();
             int year = r.Next(1900, DateTime.Now.Year);
-            int month = r.Next(0, 12);
+            int month = r.Next(1, 12);
             int day = 0;
             switch (month)
             {
                 case 1: case 3: case 5: case 7: case 8: case 10: case 12: 
-                    day = r.Next(0, 31);
+                    day = r.Next(1, 31);
                     break;
                 case 4: case 6: case 9: case 11:
-                    day = r.Next(0, 30);
+                    day = r.Next(1, 30);
                     break;
 
                 case 2:
-                    day = r.Next(0, 29);
+                    day = r.Next(1, 29);
                     break;
             }
+
             return new DateTime(year, month, day);
         }
 
         public static string GetFakeCPR(string gender, DateTime birthDate)
         {
             Random rnd = new Random();
-            string cpr = birthDate.Day.ToString() + birthDate.Month.ToString() + Convert.ToInt32(birthDate.Year.ToString().Substring(0, 2)) + rnd.Next(0, 10) + rnd.Next(0, 10) + rnd.Next(0, 10);
+
+            string day;
+            string month;
+
+            if (birthDate.Day < 10)
+                day = "0" + birthDate.Day.ToString();
+            else day = birthDate.Day.ToString();
+            if (birthDate.Month < 10)
+                month =  "0" + birthDate.Month.ToString();
+            else month = birthDate.Month.ToString();
+
+            string cpr = day + month + birthDate.Year.ToString().Substring(2, 2) + rnd.Next(0, 9).ToString() + rnd.Next(0, 9).ToString() + rnd.Next(0, 9).ToString();
+
 
             if (gender == "male")
             {
-                cpr += RandomNumberOdd(0,10);
+                cpr += RandomNumberOdd(0,9);
             }
             else
             {
