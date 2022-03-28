@@ -11,8 +11,8 @@ namespace Personal_Information_Generator_2
         public static DateTime GetRandomBirthDate()
         {
             Random r = new Random();
-            int year = r.Next(1900, DateTime.Now.Year);
-            int month = r.Next(1, 12);
+            int year = r.Next(1900, DateTime.Now.Year+1);
+            int month = r.Next(1, 13);
             int day = 0;
             switch (month)
             {

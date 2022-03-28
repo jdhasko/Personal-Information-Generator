@@ -71,7 +71,7 @@ namespace Personal_Information_Generator_2.Models
         {
             //Street
             Random rand = new Random();
-            int stringlen = rand.Next(4, 10);
+            int stringlen = rand.Next(4, 14);
     
             string street = "";
             
@@ -90,7 +90,7 @@ namespace Personal_Information_Generator_2.Models
             }
 
             //Street nr
-            int number = rand.Next(1, 999);
+            int number = rand.Next(1, 1000);
             street += " " + number;
             if (rand.Next(0, 1) == 1)
             {
@@ -104,7 +104,7 @@ namespace Personal_Information_Generator_2.Models
             street += ", ";
 
             //Floor
-            int floor = rand.Next(0, 99);
+            int floor = rand.Next(0, 100);
             if (floor == 0)
             {
                 street += "st, ";
@@ -115,9 +115,9 @@ namespace Personal_Information_Generator_2.Models
             }
 
             //Door
-            if (rand.Next(0, 1) == 1)
+            if (rand.Next(0, 2) == 1)
             {
-               int th = rand.Next(1, 3);
+               int th = rand.Next(1, 4);
                switch (th)
                {
                     case 1:
@@ -131,7 +131,7 @@ namespace Personal_Information_Generator_2.Models
                         break;
                 }
 
-               street += rand.Next(1, 50);
+               street += rand.Next(1, 51);
             }
             else
             {
@@ -141,7 +141,7 @@ namespace Personal_Information_Generator_2.Models
                 // the random number into character.
                 char letter = Convert.ToChar(randValue + 65);
                 street += char.ToLower(letter);
-                street += rand.Next(1, 999);
+                street += rand.Next(1, 1000);
             }
             street += ", ";
 
