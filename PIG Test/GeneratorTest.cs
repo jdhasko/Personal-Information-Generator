@@ -8,18 +8,73 @@ namespace PIG_Test
     {
         [Theory]
         [InlineData("male", "2000-11-09")]
-        public void GenerateFakeCpr_Test(string gender, DateTime birthDate)
+        public void GenerateFakeCpr_Test_Male(string gender, DateTime birthDate)
         {
             //Arrange
             string result;
 
             //Act
-            Generator.GetFakeCPR(gender, birthDate);
+            result=Generator.GetFakeCPR(gender, birthDate);
 
             //Assert
-            Assert.True(true);
+            Assert.True(Convert.ToInt64(result)%2!=0);
 
         }
+        [Theory]
+        [InlineData("female", "2000-11-09")]
+        public void GenerateFakeCpr_Test_Female(string gender, DateTime birthDate)
+        {
+            //Arrange
+            string result;
+
+            //Act
+            result = Generator.GetFakeCPR(gender, birthDate);
+
+            //Assert
+            Assert.True(Convert.ToInt64(result) % 2 == 0);
+
+        }
+        [Theory]
+        [InlineData("idontknowyet", "2000-11-09")]
+        public void GenerateFakeCpr_Test_Fantasy(string gender, DateTime birthDate)
+        {
+            //Arrange
+            //string result;
+
+            //Act
+            //result = Generator.GetFakeCPR(gender, birthDate);
+
+            //Assert
+            Assert.Throws<Exception>(()=>Generator.GetFakeCPR(gender, birthDate));
+
+        }
+        [Fact]
+        public void GenerateFakePhone_Test_Length()
+        {
+            //Arrange
+            string result;
+
+            //Act
+            result = Generator.GetPhoneNumber().ToString();
+
+            //Assert
+            Assert.True(result.Length==8);
+
+        }
+
+        [Fact]
+        public void GenerateFakePhone_Test_Start()
+        {
+            //Arrange
+            string result;
+
+            //Act
+            result = Generator.GetPhoneNumber().ToString();
+
+            //Assert
+            Assert.True(result.Substring(0,1)!="1");
+        }
+
 
     }
 }

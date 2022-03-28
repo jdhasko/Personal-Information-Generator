@@ -30,23 +30,19 @@ namespace PIG_Test
             //Arrange
             Identity testPerson = new Identity();
             string day = testPerson.BirthDate.Day.ToString();
-            string month = testPerson.BirthDate.Month.ToString();   
+            string month = testPerson.BirthDate.Month.ToString();
 
 
             //Act
             testPerson.CreateCPR();
 
-             day = testPerson.BirthDate.Day < 10 ? "0" + day : day;
-             month = testPerson.BirthDate.Month < 10 ? "0" + month  : month ;
-
+            day = testPerson.BirthDate.Day < 10 ? "0" + day : day;
+            month = testPerson.BirthDate.Month < 10 ? "0" + month : month;
 
 
             //Assert
-  
-                Assert.Contains( day + month + testPerson.BirthDate.Year.ToString().Substring(2, 2), testPerson.Cpr.ToString());
 
-            
-            
+            Assert.Contains(day + month + testPerson.BirthDate.Year.ToString().Substring(2, 2), testPerson.Cpr.ToString());
 
         }
 
@@ -60,7 +56,7 @@ namespace PIG_Test
             testPerson.CreateCPR();
 
             //Assert
-            if(testPerson.Gender == "male")
+            if (testPerson.Gender == "male")
             {
                 Assert.True(Convert.ToInt64(testPerson.Cpr) % 2 == 1);
             }
@@ -71,7 +67,7 @@ namespace PIG_Test
             }
         }
         [Fact]
-        public void  CPRLenght()
+        public void CPRLenght()
         {
             //Arrange
             Identity testPerson = new Identity();
@@ -83,6 +79,6 @@ namespace PIG_Test
             Assert.True(testPerson.Cpr.Length == 10);
         }
 
-       
+
     }
 }

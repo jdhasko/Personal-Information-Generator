@@ -52,9 +52,13 @@ namespace Personal_Information_Generator_2
             {
                 cpr += RandomNumberOdd(0,10);
             }
-            else
+            else if(gender=="female")
             {
                 cpr += RandomNumberEven(0,10);
+            }
+            else
+            {
+                throw new Exception();
             }
             return cpr;
         }
