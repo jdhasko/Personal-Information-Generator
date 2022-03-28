@@ -14,7 +14,7 @@ namespace Personal_Information_Generator_2.Models
         private string _cpr;
         private string _fullName;
         private string _gender;
-        private string _phoneNumber;
+        private int _phoneNumber;
         private DateTime _birthDate;
         private string _address;
 
@@ -22,12 +22,15 @@ namespace Personal_Information_Generator_2.Models
         {
             _birthDate = Generator.GetRandomBirthDate();
             _address = CreateAdress();
+            CreateCPR();
+
+            _phoneNumber = Generator.GetPhoneNumber();
         }
 
         public string Cpr { get => _cpr; set => _cpr = value; }
         public string FullName { get => _fullName; set => _fullName = value; }
         public string Gender { get => _gender; set => _gender = value; }
-        public string PhoneNumber { get => _phoneNumber; set => _phoneNumber = value; }
+        public int PhoneNumber { get => _phoneNumber; set => _phoneNumber = value; }
         public DateTime BirthDate { get => _birthDate; set => _birthDate = value; }
         public string Address { get => _address; set => _address = value; }
     
@@ -36,8 +39,8 @@ namespace Personal_Information_Generator_2.Models
         {
             if(_fullName ==null || Gender == null)
             {
-                string path= Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName + @"\Files\person-names.json";
-                string personsJSON = FileReader.ReadText(@path);
+                string path= @"Files\person-names.json";
+                string personsJSON = FileReader.ReadText(path);
                 List<Person> persons = JsonConvert.DeserializeObject<List<Person>>(personsJSON);
                 Random rnd = new Random();
                 int personNumber = rnd.Next(0, persons.Count);
@@ -150,7 +153,7 @@ namespace Personal_Information_Generator_2.Models
                 keepTrying = !PostalCodes.postCodesDictionary.ContainsKey(key.ToString());
                 if (!keepTrying)
                 {
-                    street += key + PostalCodes.postCodesDictionary[key.ToString()];
+                    street += key + " " + PostalCodes.postCodesDictionary[key.ToString()];
                 }
             }
 
