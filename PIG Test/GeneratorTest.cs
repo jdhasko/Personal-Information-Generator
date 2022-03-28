@@ -37,20 +37,7 @@ namespace PIG_Test
             Assert.True(Convert.ToInt64(result) % 2 == 0);
 
         }
-        [Theory]
-        [InlineData("idontknowyet", "2000-11-09")]
-        public void GenerateFakeCpr_Test_Fantasy(string gender, DateTime birthDate)
-        {
-            //Arrange
-            //string result;
 
-            //Act
-            //result = Generator.GetFakeCPR(gender, birthDate);
-
-            //Assert
-            Assert.Throws<Exception>(()=>Generator.GetFakeCPR(gender, birthDate));
-
-        }
         [Fact]
         public void GenerateFakePhone_Test_Length()
         {
