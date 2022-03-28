@@ -94,5 +94,35 @@ namespace Personal_Information_Generator_2
                 else return 0;
             }
         }
+
+        private static int GetPhoneNumber()
+        {
+            List<int> list = new List<int>()
+            { 2, 30, 31, 40, 41, 42, 50, 51, 52, 53, 60, 61, 71, 81, 91, 92, 93, 342, 344, 345, 346, 347, 348, 349, 356, 357, 359, 
+                362, 365, 366, 389, 398, 431, 441, 462, 466,  468,  472,  474,  476,  478,  485, 486,  488, 489, 493, 494, 495, 496,  
+                498, 499,  542, 543,  545,  551, 552, 556, 571, 572, 573, 574, 577, 579, 584, 586, 587, 589, 597, 598, 627, 629, 641, 
+                649, 658, 662, 663, 664, 665, 667, 692, 693, 694, 697, 771, 772, 782, 783, 785, 786, 788, 789, 826,827,829 };
+            Random random = new Random();
+            int phone = list[random.Next(0, list.Count - 1)];
+            //phone = phone * 10 ^ (8 - phone.ToString().Length) + random.Next(0, 9) * 10 ^ (8 - phone.ToString().Length - 1);
+            //switch (phone.ToString().Length)
+            //{
+            //    case 4: phone = phone * 10000 + random.Next(1000, 9999);
+            //        break;
+            //    case 3: phone = phone * 100000 + random.Next(10000, 99999);
+            //        break ;
+            //    case 2:
+            //        phone = phone * 1000000 + random.Next(100000, 999999);
+            //        break;
+            //    default: break;
+            //}
+            //return phone;
+            while (phone.ToString().Length !=8)
+            {
+                phone = phone*10 + random.Next(0,9);
+            }
+            return phone;
+        }
+        
     }
 }
