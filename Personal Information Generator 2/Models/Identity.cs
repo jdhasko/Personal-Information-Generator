@@ -48,7 +48,6 @@ namespace Personal_Information_Generator_2.Models
                 Gender = persons[personNumber].Gender;
 
             }
-            //return _fullName + " " + _gender;
         }
 
         public void CreateCPR() 
