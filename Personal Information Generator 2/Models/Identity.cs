@@ -36,8 +36,8 @@ namespace Personal_Information_Generator_2.Models
         {
             if(_fullName ==null || Gender == null)
             {
-                string path= Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName + @"\Files\person-names.json";
-                string personsJSON = FileReader.ReadText(@path);
+                string path= @"Files\person-names.json";
+                string personsJSON = FileReader.ReadText(path);
                 List<Person> persons = JsonConvert.DeserializeObject<List<Person>>(personsJSON);
                 Random rnd = new Random();
                 int personNumber = rnd.Next(0, persons.Count);
