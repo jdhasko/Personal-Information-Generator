@@ -22,6 +22,8 @@ namespace Personal_Information_Generator_2.Models
         {
             _birthDate = Generator.GetRandomBirthDate();
             _address = CreateAdress();
+            CreateCPR();
+
             _phoneNumber = Generator.GetPhoneNumber();
         }
 

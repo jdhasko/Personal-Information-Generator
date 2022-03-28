@@ -95,7 +95,7 @@ namespace Personal_Information_Generator_2
             }
         }
 
-        private static int GetPhoneNumber()
+        public static int GetPhoneNumber()
         {
             List<int> list = new List<int>()
             { 2, 30, 31, 40, 41, 42, 50, 51, 52, 53, 60, 61, 71, 81, 91, 92, 93, 342, 344, 345, 346, 347, 348, 349, 356, 357, 359, 
