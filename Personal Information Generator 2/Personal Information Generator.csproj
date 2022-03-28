@@ -69,7 +69,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\FileReader.cs" />
-    <Compile Include="Services\PostalCodes.cs" />
+    <Compile Include="Statics\PostalCodes.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
