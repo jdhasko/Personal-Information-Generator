@@ -150,7 +150,7 @@ namespace Personal_Information_Generator_2.Models
                 keepTrying = !PostalCodes.postCodesDictionary.ContainsKey(key.ToString());
                 if (!keepTrying)
                 {
-                    street += key + PostalCodes.postCodesDictionary[key.ToString()];
+                    street += key + " " + PostalCodes.postCodesDictionary[key.ToString()];
                 }
             }
 
