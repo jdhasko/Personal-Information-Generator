@@ -8,6 +8,9 @@ namespace PIG_Test
     {
         [Theory]
         [InlineData("male", "2000-11-09")]
+        [InlineData("male", "1900-04-09")]
+        [InlineData("male", "1922-08-09")]
+        [InlineData("male", "1999-07-09")]
         public void GenerateFakeCpr_Test_Male(string gender, DateTime birthDate)
         {
             //Arrange
